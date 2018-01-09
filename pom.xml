@@ -27,6 +27,7 @@
         <module>oriki-lucene</module>
         <module>oriki-reflect</module>
         <module>oriki-cxf-server</module>
+        <module>oriki-cxf-client</module>
     </modules>
 
 
