@@ -1,3 +1,4 @@
 .idea
 *.iml
 *.class
+oriki-cxf-spring-server/target
