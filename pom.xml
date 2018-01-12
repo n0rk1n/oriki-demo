@@ -29,6 +29,7 @@
         <module>oriki-cxf-server</module>
         <module>oriki-cxf-client</module>
         <module>oriki-cxf-spring-server</module>
+        <module>oriki-cxf-spring-client</module>
     </modules>
 
 
