@@ -1,5 +1,5 @@
 .idea
 *.iml
 *.class
-oriki-cxf-spring-server/target
-oriki-cxf-spring-client/target
+target
+
