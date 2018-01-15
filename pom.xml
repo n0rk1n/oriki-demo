@@ -34,6 +34,7 @@
         <module>oriki-cxf-rest-client</module>
         <module>oriki-cxf-spring-rest-server</module>
         <module>oriki-cxf-spring-rest-client</module>
+        <module>oriki-activemq-producer</module>
     </modules>
 
 
