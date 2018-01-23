@@ -39,6 +39,7 @@
         <module>oriki-activemq-spring-producer</module>
         <module>oriki-activemq-spring-consumer</module>
         <module>oriki-elasticsearch</module>
+        <module>oriki-elasticsearch-spring</module>
     </modules>
 
 
