@@ -83,7 +83,7 @@ public class ElasticSearchTest {
                 .addTransportAddress(
                         new InetSocketTransportAddress(InetAddress.getByName("172.16.191.201"), 9300));
 
-        //XContentBuilder工具类，用来组装json对象
+        // 创建用来组装json对象的XContentBuilder对象
         XContentBuilder builder = XContentFactory.jsonBuilder()
                 .startObject().
                         startObject("properties").
@@ -99,11 +99,12 @@ public class ElasticSearchTest {
                 .endObject()
                 .endObject();
 
-        //创建映射关系
+        // 创建映射关系
         PutMappingRequest mappingRequest = Requests.putMappingRequest("index_blog")
                 .type("article")
                 .source(builder);
-        //关闭连接
+
+        // 释放资源
         client.close();
     }
 
@@ -128,7 +129,7 @@ public class ElasticSearchTest {
 
         ObjectMapper objectMapper = new ObjectMapper();
 
-        //建立文档
+        // 创建文档，参数1为索引的名称，参数2为文档的类型，参数3为文档的主键（如果不指定，随机生成）
         //参数1：索引表的名字
         //参数2：文档类型（通过映射分词条）
         //参数3：文档的主键，如果不指定，则默认生成随机索引主键，如果指定，则索引主键和业务主键一样。
@@ -148,7 +149,11 @@ public class ElasticSearchTest {
     }
 
 
-    //批量插入
+    /**
+     * 批量插入数据
+     *
+     * @throws Exception
+     */
     @Test
     public void testAddDocumentBatch() throws Exception {
         Client client = TransportClient
@@ -173,7 +178,11 @@ public class ElasticSearchTest {
         client.close();
     }
 
-    //普通查询
+    /**
+     * 简单查询
+     *
+     * @throws Exception
+     */
     @Test
     public void testBaseQuery() throws Exception {
         //创建连接搜索服务器对象
@@ -184,23 +193,19 @@ public class ElasticSearchTest {
                 .addTransportAddress(
                         new InetSocketTransportAddress(InetAddress.getByName("172.16.191.201"), 9300));
 
-        //++++++++++++++++++++++++++++++++
         //搜索数据
-        //获取搜索结果的响应对象
-        //get()===（等价）execute().actionGet()
         SearchResponse searchResponse = client.prepareSearch("index_blog")//从哪个索引中检索数据
                 .setTypes("article")//检索数据类别，如果不写，则是所有类别
-                //设置查询策略！（比较复杂）
-                .setQuery(QueryBuilders.matchAllQuery())//所有的数据，没条件
+                //设置查询策略
+                .setQuery(QueryBuilders.matchAllQuery())//所有的数据
                 .get();
-        //++++++++++++++++++++++++++++++++
 
-        //通过结果响应对象，来获取我们需要的信息
-        //获取命中的数据信息
+        // 通过结果响应对象
+        // 获取命中的数据信息
         SearchHits hits = searchResponse.getHits();
-        //1）获取命中次数，查询有多少结果对象
-        System.out.println("++++++++++查询的结果的总条数：" + hits.getTotalHits() + ",最高分：" + hits.getMaxScore());
-        //2）获取命中的数据元素的集合
+        // 1）获取命中次数，查询有多少结果对象
+        System.out.println("查询的结果的总条数：" + hits.getTotalHits() + ",最高分：" + hits.getMaxScore());
+        // 2）获取命中的数据元素的集合
         Iterator<SearchHit> searchHitIterator = hits.iterator();
         while (searchHitIterator.hasNext()) {
             //依次检索每个命中对象
@@ -222,33 +227,28 @@ public class ElasticSearchTest {
     //分页查询
     @Test
     public void testPageQuery() throws Exception {
-        //创建连接搜索服务器对象
-        //默认的服务的端口是9300
         Client client = TransportClient
                 .builder()
                 .build()
                 .addTransportAddress(
                         new InetSocketTransportAddress(InetAddress.getByName("172.16.191.201"), 9300));
-        //++++++++++++++++++++++++++++++++
+
         //搜索数据
-        //获取搜索结果的响应对象
-        //get()===（等价）execute().actionGet()
         SearchResponse searchResponse = client.prepareSearch("index_blog")//从哪个索引中检索数据
                 .setTypes("article")//检索数据类别，如果不写，则是所有类别
-                //设置查询策略！（比较复杂）
-                .setQuery(QueryBuilders.matchAllQuery())//所有的数据，没条件
+                //设置查询策略
+                .setQuery(QueryBuilders.matchAllQuery())
                 //每页10条，第二页
                 .setFrom(10)//起始的行号，默认是0
                 .setSize(20)//最大记录数，默认是10
                 .get();
-        //++++++++++++++++++++++++++++++++
 
-        //通过结果响应对象，来获取我们需要的信息
-        //获取命中的数据信息
+        // 通过结果响应对象
+        // 获取命中的数据信息
         SearchHits hits = searchResponse.getHits();
-        //1）获取命中次数，查询有多少结果对象
+        // 1）获取命中次数，查询有多少结果对象
         System.out.println("++++++++++查询的结果的总条数：" + hits.getTotalHits() + ",最高分：" + hits.getMaxScore());
-        //2）获取命中的数据元素的集合
+        // 2）获取命中的数据元素的集合
         Iterator<SearchHit> searchHitIterator = hits.iterator();
         while (searchHitIterator.hasNext()) {
             //依次检索每个命中对象
@@ -264,7 +264,6 @@ public class ElasticSearchTest {
 
         //关闭连接
         client.close();
-        System.out.println("ok.............");
     }
 
 }
