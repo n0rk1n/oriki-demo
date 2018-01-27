@@ -40,6 +40,7 @@
         <module>oriki-activemq-spring-consumer</module>
         <module>oriki-elasticsearch</module>
         <module>oriki-elasticsearch-spring</module>
+        <module>oriki-collection</module>
     </modules>
 
 
