@@ -42,6 +42,7 @@
         <module>oriki-elasticsearch-spring</module>
         <module>oriki-collection</module>
         <module>oriki-map</module>
+        <module>oriki-sensitiveWord</module>
     </modules>
 
 
