@@ -45,6 +45,7 @@
         <module>oriki-sensitiveWord</module>
         <module>oriki-springcloud-item</module>
         <module>oriki-springcloud-order</module>
+        <module>oriki-springcloud-eureka</module>
     </modules>
 
 

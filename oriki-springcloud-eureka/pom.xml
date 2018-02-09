@@ -9,7 +9,8 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>oriki-springcloud-item</artifactId>
+    <artifactId>oriki-springcloud-eureka</artifactId>
+    <!-- 导入Spring Cloud的依赖管理 -->
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -23,16 +24,11 @@
     </dependencyManagement>
 
     <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
         <!-- 导入Eureka服务的依赖 -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-eureka-server</artifactId>
         </dependency>
-
     </dependencies>
 
     <build>
@@ -58,5 +54,6 @@
             </plugin>
         </plugins>
     </build>
+
 
 </project>
