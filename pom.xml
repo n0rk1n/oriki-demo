@@ -43,6 +43,8 @@
         <module>oriki-collection</module>
         <module>oriki-map</module>
         <module>oriki-sensitiveWord</module>
+        <module>oriki-springcloud-item</module>
+        <module>oriki-springcloud-order</module>
     </modules>
 
 
