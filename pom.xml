@@ -46,6 +46,7 @@
         <module>oriki-springcloud-item</module>
         <module>oriki-springcloud-order</module>
         <module>oriki-springcloud-eureka</module>
+        <module>oriki-springcloud-zuul</module>
     </modules>
 
 
