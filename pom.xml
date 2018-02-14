@@ -47,6 +47,8 @@
         <module>oriki-springcloud-order</module>
         <module>oriki-springcloud-eureka</module>
         <module>oriki-springcloud-zuul</module>
+        <module>oriki-springcloud-config-server</module>
+        <module>oriki-springcloud-config-client</module>
     </modules>
 
 
